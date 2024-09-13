@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 def matrix_shape(matrix):
-    if type(matrix) is not list:
-        return []
-    return [len(matrix)] + matrix_shape(matrix[0])
+    findshape = []
+    while type(matrix) == list:
+        findshape.append(len(matrix))
+        matrix = matrix[0]
+    return findshape
 
 mat1 = [[1, 2], [3, 4]]
 print(matrix_shape(mat1))
