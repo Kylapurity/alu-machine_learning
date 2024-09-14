@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
+"""Define a function  that slices a matrix along specific axes"""
 
-import numpy as np
 
 def np_slice(matrix, axes={}):
+    """return the tuple""" 
     slices = [slice(None)] * matrix.ndim
     for axis, slice_ in axes.items():
         slices[axis] = slice(*slice_)
