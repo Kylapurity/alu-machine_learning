@@ -3,9 +3,9 @@
 
 
 def matrix_shape(matrix):
-     """ returns list of integers representing dimensions of given matrix """   
-    findshape = []
-    while isinstance(matrix, list):
-        findshape.append(len(matrix))
+    """ returns list of integers representing dimensions of given matrix """
+    matrix_shape = []
+    while (type(matrix) is list):
+        matrix_shape.append(len(matrix))
         matrix = matrix[0]
-    return findshape
+    return matrix_shape
