@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """Define arrays"""
 
+
 def add_arrays(arr1, arr2):
     """Add two arrays"""
     if len(arr1) != len(arr2):
