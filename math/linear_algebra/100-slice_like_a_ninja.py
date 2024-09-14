@@ -3,7 +3,7 @@
 
 
 def np_slice(matrix, axes={}):
-    """return the tuple""" 
+    """return the tuple"""
     slices = [slice(None)] * matrix.ndim
     for axis, slice_ in axes.items():
         slices[axis] = slice(*slice_)
