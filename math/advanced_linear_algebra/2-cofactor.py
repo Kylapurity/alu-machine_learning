@@ -29,8 +29,8 @@ def cofactor(matrix):
                 if k == i:
                     continue
                 row = []
-                for l in range(len(matrix[i])):
-                    if l == j:
+                for m in range(len(matrix[i])):
+                    if m == j:
                         continue
                     row.append(matrix[k][l])
                 minor.append(row)
