@@ -8,19 +8,20 @@ def cofactor(matrix):
     '''
     Function to calculate the cofactor of a matrix.
     '''
-    n = len(matrix)
-    cofactor_matrix = [[0 for _ in range(n)] for _ in range(n)]
-    for i in range(n):
-        for j in range(n):
-            # Calculate the minor matrix
+    if not isinstance(matrix, list) or len(matrix) == 0\
+       or not all(isinstance(row, list) for row in matrix):
+        raise TypeError("matrix must be a list of lists")
+    if not all(len(row) == len(matrix) for row in matrix):
+        raise ValueError("matrix must be a non-empty square matrix")
+    cofactor_matrix = []
+    for i in range(len(matrix)):
+        cofactor_matrix.append([])
+        for j in range(len(matrix)):
             minor_matrix = minor(matrix, i, j)
-            # Calculate the determinant of the minor matrix
-            minor_det = determinant(minor_matrix)
-            # Calculate the cofactor
-            cofactor_matrix[i][j] = ((-1) ** (i + j)) * minor_det
+            cofactor_matrix[i].append(((-1) ** (i + j)) * determinant(minor_matrix))
     return cofactor_matrix
 
-
+   
 def minor(matrix, i, j):
     '''
     Function to calculate the minor of a matrix.
