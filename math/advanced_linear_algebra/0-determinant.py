@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""Defne a fuction that caculate the determinat of a matrix"""
+
+
 def determinant(matrix):
     """ Calculate the determinant of a square matrix. """
     if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
