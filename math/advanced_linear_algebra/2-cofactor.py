@@ -32,7 +32,7 @@ def cofactor(matrix):
                 for m in range(len(matrix[i])):
                     if m == j:
                         continue
-                    row.append(matrix[k][l])
+                    row.append(matrix[k][m])
                 minor.append(row)
             cofactor_row.append(determinant(minor) * (-1) ** (i + j))
         cofactor_matrix.append(cofactor_row)
