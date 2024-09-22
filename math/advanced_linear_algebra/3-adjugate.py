@@ -3,6 +3,7 @@
 This module contains the function to calculate the adjugate of a matrix.
 '''
 
+
 def adjugate(matrix):
     '''
     Returns the adjugate of a matrix.
@@ -30,6 +31,7 @@ def adjugate(matrix):
 
     return list(map(list, zip(*adjugate_matrix)))
 
+
 def determinant(matrix):
     '''
     Returns the determinant of a matrix.
@@ -51,7 +53,8 @@ def determinant(matrix):
 
     det = 0
     for c in range(len(matrix)):
-        det += ((-1) ** c) * matrix[0][c] * determinant([row[:c] + row[c + 1:] 
-                                                          for row in matrix[1:]])
+        det += ((-1) ** c) * matrix[0][c] * determinant(
+            [row[:c] + row[c + 1:] for row in matrix[1:]]
+        )
     return det
 
