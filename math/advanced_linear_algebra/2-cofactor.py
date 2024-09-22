@@ -37,6 +37,8 @@ def cofactor(matrix):
             cofactor_row.append(determinant(minor) * (-1) ** (i + j))
         cofactor_matrix.append(cofactor_row)
     return cofactor_matrix
+
+
 def determinant(matrix):
     '''
     Returns the determinant of a matrix.
