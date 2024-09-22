@@ -4,7 +4,6 @@ This module contains the function to calculate the cofacor of a matrix.
 '''
 
 
-
 def cofactor(matrix):
     '''
     Function to calculate the cofactor of a matrix.
