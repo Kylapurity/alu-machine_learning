@@ -24,7 +24,7 @@ def adjugate(matrix):
     for i in range(len(matrix)):
         adjugate_matrix.append([])
         for j in range(len(matrix)):
-sub_matrix = [row[:j] + row[j + 1:] 
+          sub_matrix = [row[:j] + row[j + 1:] 
         for row in (matrix[:i] + matrix[i + 1:])]
             sign = (-1) ** (i + j)
             adjugate_matrix[i].append(sign * determinant(sub_matrix))
@@ -53,6 +53,6 @@ def determinant(matrix):
 
     det = 0
     for c in range(len(matrix)):
-        det += ((-1) ** c) * matrix[0][c] * determinant([row[:c] + row[c + 1:]
-for row in matrix[1:]])
+       det += ((-1) ** c) * matrix[0][c] * determinant([row[:c] + row[c + 1:]
+     for row in matrix[1:]])
     return det
