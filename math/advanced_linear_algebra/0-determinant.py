@@ -16,7 +16,7 @@ def determinant(matrix):
         return matrix[0][0]
     if n == 2:
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
-    #Recursive case: nxn matriv
+   # Recursive case: nxn matriv
     det = 0
     for i in range(n):
         sign = (-1) ** i
