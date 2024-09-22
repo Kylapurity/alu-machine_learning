@@ -11,11 +11,9 @@ def definiteness(matrix):
     '''
     # Check if matrix is a numpy.ndarray
     if not isinstance(matrix, np.ndarray):
-        raise TypeError("matrix must be a numpy.ndarray")
-     # Check if matrix is square
+        raise TypeError("matrix must be a numpy..ndarray")
     if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
-        return None
-    
+        return None    
     # Check if matrix is symmetric
     if not np.allclose(matrix, matrix.T):
         return None
