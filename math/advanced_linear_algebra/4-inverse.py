@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 '''
-This module contains the function to calculate the Inverse of a matrix.
+This script demonstrates how to calculate the
+inverse of a matrix without using the numpy library.
 '''
 
 
@@ -8,32 +9,61 @@ def inverse(matrix):
     '''
     This function calculates the inverse of a matrix.
     '''
-    # Check if the matrix is square
     if not isinstance(matrix, list) or len(matrix) == 0 or \
        not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a list of lists")
-    if not all(len(row) == len(matrix) for row in matrix):
+
+    # Check if matrix is square
+    n = len(matrix)
+    if any(len(row) != n for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
-    if not all(isinstance(element, (int, float))
-  for row in matrix for element in row):
-        raise TypeError("matrix should contain only integers and floats")
-    # Check if the matrix is invertible
-    if len(matrix) == 1:
+
+    # Special case for 1x1 matrix
+    if n == 1:
         if matrix[0][0] == 0:
             return None
-        else:
-            return [[1 / matrix[0][0]]]
-    if len(matrix) == 2:
-        if matrix[0][0] * matrix[1][1] == matrix[0][1] * matrix[1][0]:
-            return None
-    # Calculate the determinant of the matrix
-    determinant = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
-    # Check if the determinant is zero
-    if determinant == 0:
-        return None
-    # Calculate the adjugate of the matrix
-    adjugate = [[matrix[1][1], -matrix[0][1]], [-matrix[1][0], matrix[0][0]]]
-    # Calculate the inverse of the matrix
-    inverse = [[adjugate[0][0] / determinant, adjugate[0][1] / determinant],
-               [adjugate[1][0] / determinant, adjugate[1][1] / determinant]]
-    return inverse
+        return [[round(1 / matrix[0][0], 1)]]
+
+    # Create an augmented matrix [A|I]
+    augmented = [row + [int(i == j) for j in range(n)]
+                 for i, row in enumerate(matrix)]
+
+    # Gaussian elimination
+    for i in range(n):
+        # Find pivot
+        pivot = max(range(i, n), key=lambda k: abs(augmented[k][i]))
+        if augmented[pivot][i] == 0:
+            return None  # Matrix is singular
+
+        # Swap rows
+        augmented[i], augmented[pivot] = augmented[pivot], augmented[i]
+
+        # Scale row
+        scale = augmented[i][i]
+        for j in range(i, 2*n):
+            augmented[i][j] /= scale
+
+        # Eliminate
+        for k in range(n):
+            if k != i:
+                factor = augmented[k][i]
+                for j in range(i, 2*n):
+                    augmented[k][j] -= factor * augmented[i][j]
+
+    # Extract inverse from the right half of the augmented matrix
+    inverse = [row[n:] for row in augmented]
+
+    # Format the output to match the desired precision
+    formatted_inverse = []
+    for row in inverse:
+        formatted_row = []
+        for elem in row:
+            if abs(elem) < 1e-10:
+                formatted_row.append(0.0)
+            elif abs(elem - round(elem, 1)) < 1e-10:
+                formatted_row.append(round(elem, 1))
+            else:
+                formatted_row.append(elem)
+        formatted_inverse.append(formatted_row)
+
+    return formatted_inverse
