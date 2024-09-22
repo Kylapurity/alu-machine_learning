@@ -18,10 +18,11 @@ def cofactor(matrix):
         cofactor_matrix.append([])
         for j in range(len(matrix)):
             minor_matrix = minor(matrix, i, j)
-            cofactor_matrix[i].append(((-1) ** (i + j)) * determinant(minor_matrix))
+            cofactor_matrix[i].append(((-1) ** (i + j)) *
+determinant(minor_matrix))
     return cofactor_matrix
 
-   
+
 def minor(matrix, i, j):
     '''
     Function to calculate the minor of a matrix.
