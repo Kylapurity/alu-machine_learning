@@ -19,7 +19,7 @@ def cofactor(matrix):
         for j in range(len(matrix)):
             minor_matrix = minor(matrix, i, j)
             cofactor_matrix[i].append(((-1) ** (i + j)) *
-                                                determinant(minor_matrix))
+                 determinant(minor_matrix))
     return cofactor_matrix
 
 
