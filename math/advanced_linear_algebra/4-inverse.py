@@ -14,8 +14,8 @@ def inverse(matrix):
         raise TypeError("matrix must be a list of lists")
     if not all(len(row) == len(matrix) for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
-    if not all(isinstance(element, (int, float)) for row in matrix for element in row
-    ):
+    if not all(isinstance(element, (int, float)) 
+for row in matrix for element in row):
         raise TypeError("matrix should contain only integers and floats")
     # Check if the matrix is invertible
     if len(matrix) == 1:
