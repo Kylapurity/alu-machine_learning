@@ -24,6 +24,7 @@ def determinant(matrix):
         det += sign * matrix[0][i] * sub_det
     return det
 
+
 def minor(matrix):
     """ Calculate the minor of a square matrix. """
     if not isinstance(matrix, list) or not all(isinstance(row, list)
@@ -33,12 +34,13 @@ def minor(matrix):
         return [[]]
     n = len(matrix)
     if any(len(row) != n for row in matrix):
-        raise ValueError("matrix must be a square matrix")
+        raise ValueError("matrix must be a non-empty square matrix")
     if n == 1:
         return [[1]]
     minors = []
     for i in range(n):
         minors.append([])
         for j in range(n):
-            minors[i].append(determinant([row[:j] + row[j + 1:] for row in (matrix[:i] + matrix[i + 1:])]))
+            minors[i].append(determinant([row[:j] + row[j + 1:]
+          for row in (matrix[:i] + matrix[i + 1:])]))
     return minors
