@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''Define a Create a class Exponential that represents an exponential distribution:'''
+'''Defines a class Exponential that represents an exponential distribution.'''
 
 class Exponential:
     '''Exponential distribution'''
@@ -40,4 +40,5 @@ class Exponential:
 
     def __str__(self):
         '''Returns a string representation of the distribution'''
-        return 'Exponential distribution for data with lambtha: {}'.format(self.lambtha)
+        return ('Exponential distribution for data with lambtha: '
+                '{}'.format(self.lambtha))
