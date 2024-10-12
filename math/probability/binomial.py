@@ -45,7 +45,9 @@ class Binomial:
         n = self.n
         p = self.p
         # Calculate binomial coefficient: n! / (k! * (n-k)!)
-        binom_coeff = self.factorial(n) / (self.factorial(k) * self.factorial(n - k))
+        binom_coeff = self.factorial(n) / (
+            self.factorial(k) * self.factorial(n - k)
+        )
         pmf = binom_coeff * (p ** k) * ((1 - p) ** (n - k))
         return pmf
 
