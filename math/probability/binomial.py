@@ -4,6 +4,7 @@
 
 class Binomial:
     '''Binomial distribution class'''
+    
     def __init__(self, data=None, n=1, p=0.5):
         '''Constructor'''
         if data is None:
@@ -26,18 +27,26 @@ class Binomial:
             self.n = n
             self.p = p
 
+    def factorial(self, k):
+        '''Helper method to calculate factorial'''
+        if k == 0 or k == 1:
+            return 1
+        result = 1
+        for i in range(2, k + 1):
+            result *= i
+        return result
+
     def pmf(self, k):
         '''Calculates the value of the PMF for a given number of successes'''
         if type(k) is not int:
             k = int(k)
-        if k < 0:
+        if k < 0 or k > self.n:
             return 0
         n = self.n
         p = self.p
-        f = 1
-        for i in range(1, k + 1):
-            f *= i
-        pmf = f * (p ** k) * ((1 - p) ** (n - k)) / (f * (1 ** k))
+        # Calculate binomial coefficient: n! / (k! * (n-k)!)
+        binom_coeff = self.factorial(n) / (self.factorial(k) * self.factorial(n - k))
+        pmf = binom_coeff * (p ** k) * ((1 - p) ** (n - k))
         return pmf
 
     def cdf(self, k):
