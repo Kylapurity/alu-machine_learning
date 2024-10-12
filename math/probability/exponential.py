@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 '''Defines a class Exponential that represents an exponential distribution.'''
 
-
 class Exponential:
     '''Exponential distribution'''
 
@@ -19,7 +18,7 @@ class Exponential:
             self.lambtha = len(data) / sum(data)
             self.data = data
 
-    def probability(self, x):
+    def pdf(self, x):
         '''Calculates the value of the PDF for a given time period'''
         if x < 0:
             return 0
