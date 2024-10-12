@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 '''Defines a class Exponential that represents an exponential distribution.'''
 
+
 class Exponential:
     '''Exponential distribution'''
 
