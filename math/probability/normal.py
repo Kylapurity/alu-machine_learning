@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 '''Defines a class Normal that represents a normal distribution.'''
 
+
 class Normal:
     '''Normal distribution class'''
 
@@ -40,7 +41,9 @@ class Normal:
         '''Calculates the value of the CDF for a given x-value'''
         pi = 3.1415926536
         z = (x - self.mean) / (self.stddev * 2 ** 0.5)
-        erf_approx = (z - (z ** 3 / 3) + (z ** 5 / 10) - (z ** 7 / 42) + (z ** 9 / 216))
+        erf_approx = (
+            z - (z ** 3 / 3) + (z ** 5 / 10) - (z ** 7 / 42) + (z ** 9 / 216)
+        )
         return (1 + (erf_approx * 2 / pi ** 0.5)) / 2
 
     def __str__(self):
