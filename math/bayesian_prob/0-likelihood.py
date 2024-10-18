@@ -2,26 +2,28 @@
 '''Define a function that calculates the likelihood of obtaining 
 this data given various hypothetical probabilities of developing severe side effects'''
 
+import numpy as np
 
 def likelihood(x, n, P):
     '''Function that calculates the likelihood of obtaining 
     this data given various hypothetical probabilities of developing severe side effects'''
+    # Validations
     if type(n) is not int or n <= 0:
         raise ValueError("n must be a positive integer")
     if type(x) is not int or x < 0:
         raise ValueError("x must be an integer that is greater than or equal to 0")
     if x > n:
         raise ValueError("x cannot be greater than n")
-    if type(P) is not float or P < 0 or P > 1:
-        raise ValueError("P must be a float in the range [0, 1]")
-    fact_n = 1
-    fact_x = 1
-    fact_diff = 1
-    for i in range(1, n + 1):
-        fact_n *= i
-    for i in range(1, x + 1):
-        fact_x *= i
-    for i in range(1, n - x + 1):
-        fact_diff *= i
-    likelihood = (fact_n / (fact_x * fact_diff)) * (P ** x) * ((1 - P) ** (n - x))
-    return likelihood
+    if not isinstance(P, np.ndarray) or P.ndim != 1:
+        raise TypeError("P must be a 1D numpy.ndarray")
+    if not np.all((0 <= P) & (P <= 1)):
+        raise ValueError("All values in P must be in the range [0, 1]")
+
+    # Calculate the factorial combination term (n choose x)
+    fact_nx = np.math.factorial(n) / (np.math.factorial(x) * np.math.factorial(n - x))
+
+    # Likelihood formula
+    likelihoods = fact_nx * (P ** x) * ((1 - P) ** (n - x))
+    
+    return likelihoods
+
