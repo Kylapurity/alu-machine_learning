@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-'''Define a function that calculates the likelihood of obtaining 
-this data given various hypothetical probabilities of developing severe side effects'''
+'''Define a function that calculates the likelihood of obtaining this data'''
 
 import numpy as np
 
+
 def likelihood(x, n, P):
-    '''Function that calculates the likelihood of obtaining 
-    this data given various hypothetical probabilities of developing severe side effects'''
+    '''Function that calculates the likelihood of obtaining this data given'''
 
     if not isinstance(n, int) or n <= 0:
         raise ValueError("n must be a positive integer")
