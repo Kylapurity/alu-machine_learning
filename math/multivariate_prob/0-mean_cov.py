@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+'''Define  hat calculates the mean and covariance of a data set'''
 import numpy as np
 
 
