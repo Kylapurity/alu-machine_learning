@@ -4,6 +4,7 @@ this data with the various hypothetical probabilities"""
 
 import numpy as np
 
+
 def posterior(x, n, P, Pr):
     """Function that calculates the posterior probability of developing sev"""
     # Validate inputs
@@ -35,6 +36,7 @@ def posterior(x, n, P, Pr):
     posterior_prob = inter / marginal_prob
 
     return posterior_prob
+
 
 # Ensure you have the intersection function defined as well
 def intersection(x, n, P, Pr):
