@@ -10,7 +10,7 @@ def intersection(x, n, P, Pr):
     this data with the various hypothetical probabilities"""
     if type(n) is not int or n <= 0:
         raise ValueError("n must be a positive integer")
-     if type(x) is not int or x < 0:
+    if type(x) is not int or x < 0:
         text = "x must be an integer that is greater than or equal to 0"
         raise ValueError(text)
     if x > n:
@@ -25,10 +25,8 @@ def intersection(x, n, P, Pr):
         raise ValueError("All values in Pr must be in the range [0, 1]")
     if not np.isclose([np.sum(Pr)], [1.])[0]:
         raise ValueError("Pr must sum to 1")
-    
     num = np.math.factorial(n)
     den = np.math.factorial(x) * np.math.factorial(n - x)
     coeficient = num / den
     likehood = coeficient * (P ** x) * ((1 - P) ** (n - x))
-    
     return likehood * Pr
