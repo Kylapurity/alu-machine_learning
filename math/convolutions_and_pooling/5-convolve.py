@@ -48,7 +48,8 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
                 region = padded_images[:, i * sh:i * sh + kh, j * sw:j * sw + kw, :]
                 # Perform element-wise multiplication and sum the result
                 output[:, i, j, k] = np.sum(
-                    region * kernels[:, :, :, k], axis=(1, 2, 3)
+                    region * kernels[:, :, :, k],
+                    axis=(1, 2, 3)
                 )
 
     return output
