@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Module that performs a convolution on grayscale images with custom padding and stride.
+Module that performs a convolution on grayscale images with custom padding
+and stride.
 """
 
 import numpy as np
@@ -25,7 +26,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     # Pad the images with zeros
     padded_images = np.pad(
         images, ((0, 0), (ph, ph), (pw, pw)), mode='constant'
-        )
+    )
 
     # Calculate the dimensions of the output
     output_h = (h + 2 * ph - kh) // sh + 1
