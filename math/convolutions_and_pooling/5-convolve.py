@@ -15,7 +15,10 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
     sh, sw = stride
 
     if kc != c:
-        raise ValueError("The number of channels in the kernels must match the number of channels in the images")
+        raise ValueError(
+            "The number of channels in the kernels must match the number "
+            "of channels in the images"
+        )
 
     if padding == 'same':
         ph = ((h - 1) * sh + kh - h) // 2 + 1
@@ -26,7 +29,9 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
         ph, pw = padding
 
     # Pad the images with zeros
-    padded_images = np.pad(images, ((0, 0), (ph, ph), (pw, pw), (0, 0)), mode='constant')
+    padded_images = np.pad(
+        images, ((0, 0), (ph, ph), (pw, pw), (0, 0)), mode='constant'
+    )
 
     # Calculate the dimensions of the output
     output_h = (h + 2 * ph - kh) // sh + 1
@@ -40,8 +45,10 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
         for i in range(output_h):
             for j in range(output_w):
                 # Extract the region of interest
-                region = padded_images[:, i*sh:i*sh+kh, j*sw:j*sw+kw, :]
+                region = padded_images[:, i * sh:i * sh + kh, j * sw:j * sw + kw, :]
                 # Perform element-wise multiplication and sum the result
-                output[:, i, j, k] = np.sum(region * kernels[:, :, :, k], axis=(1, 2, 3))
+                output[:, i, j, k] = np.sum(
+                    region * kernels[:, :, :, k], axis=(1, 2, 3)
+                )
 
     return output
