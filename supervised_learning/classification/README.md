@@ -1,3 +1,1 @@
-Supervised Learning 
-Neurons
-Tensoflow 
+# Classification

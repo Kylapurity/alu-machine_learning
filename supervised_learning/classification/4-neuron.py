@@ -59,3 +59,33 @@ class Neuron:
         sigmoid = 1 / (1 + np.exp(-z))
         self.__A = sigmoid
         return self.__A
+
+    def cost(self, Y, A):
+        """ Compute the of the model using logistic regression
+
+        Args:
+            Y (np.array): True values
+            A (np.array): Prediction valuesss
+
+        Returns:
+            float: cost function
+        """
+        # calculate
+        loss = - (Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
+        cost = np.mean(loss)
+        return cost
+
+    def evaluate(self, X, Y):
+        """ Evaluate the cost function
+
+        Args:
+            X (np.array): Input array
+            Y (np.array): actual values
+
+        Returns:
+            tuple: Prediction and Cost
+        """
+        pred = self.forward_prop(X)
+        cost = self.cost(Y, pred)
+        pred = np.where(pred > 0.5, 1, 0)
+        return (pred, cost)
