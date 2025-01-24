@@ -5,7 +5,11 @@ The script class Neuron that defines a single neuron performing binary classific
 '''
 import numpy as np
 
+
 class Neuron:
+    '''
+    Class that defines a single neuron performing binary classification
+    '''
 
     def __init__(self, nx):
         '''
