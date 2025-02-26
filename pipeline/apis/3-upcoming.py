@@ -25,10 +25,6 @@ if __name__ == '__main__':
     launchpad = requests.get(lurl)
     launchpad_name = launchpad.json()["name"]
     launchpad_local = launchpad.json()["locality"]
-
-    # Format the date to match the expected output
-    date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S%z").strftime("%Y-%m-%dT%H:%M:%S%z")
-
     string = "{} ({}) {} - {} ({})".format(launch_name, date, rocket_name,
                                            launchpad_name, launchpad_local)
 
