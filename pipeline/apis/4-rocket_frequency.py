@@ -19,9 +19,9 @@ if __name__ == "__main__":
         rocket_id = launch["rocket"]
         rocket_dict[rocket_id] = rocket_dict.get(rocket_id, 0) + 1
 
-    # Fetch rocket names
+    # Fetch rocket names and print results
     for key, value in sorted(rocket_dict.items(), key=lambda kv: kv[1], reverse=True):
-        rurl = f"https://api.spacexdata.com/v4/rockets/{key}"
+        rurl = "https://api.spacexdata.com/v4/rockets/" + key  # Avoid f-string
         req = requests.get(rurl)
 
         if req.status_code == 200:
